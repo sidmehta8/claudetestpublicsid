@@ -1,6 +1,3 @@
-import tkinter as tk
-
-
 class Calculator:
     def __init__(self):
         self.display = "0"
@@ -81,6 +78,8 @@ class Calculator:
         self.display = str(int(val)) if val == int(val) else str(val)
 
 
+import tkinter as tk
+
 DARK_BG = "#1c1c1e"
 DISPLAY_BG = "#1c1c1e"
 BTN_DIGIT = "#333335"
@@ -100,7 +99,7 @@ def build_ui(root: tk.Tk, calc: Calculator):
 
     def refresh():
         val = calc.display
-        display_var.set(val if len(val) <= 12 else val[:12])
+        display_var.set(val if len(val) <= 12 else val[:11] + "…")
 
     display = tk.Label(
         root, textvariable=display_var, font=("SF Pro Display", 48, "normal"),

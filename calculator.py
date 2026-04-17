@@ -10,8 +10,10 @@ class Calculator:
             self.display = digit
             self._new_input = False
         else:
-            self.display = "0" if self.display == "0" else self.display
-            self.display = self.display + digit
+            if self.display == "0":
+                self.display = digit
+            else:
+                self.display = self.display + digit
 
     def input_decimal(self):
         if self._new_input:
@@ -51,9 +53,10 @@ class Calculator:
             else:
                 return
             self.display = str(int(result)) if result == int(result) else str(result)
+            self._new_input = True
         except Exception:
             self.display = "Error"
-        self._new_input = True
+            self._new_input = True
 
     def clear(self):
         self.display = "0"
